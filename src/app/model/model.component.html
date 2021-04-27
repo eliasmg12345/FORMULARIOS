@@ -1,1 +1,37 @@
-<p>model works!</p>
+<!-- C4 lo primeo es la etiqueta form ..usando la directiva [formGroup]
+y como lo que pasa es una variable se le pone corchetes-->
+<!-- para el resto delos campor usamos la directiva formControlName -->
+<!-- como los formularios emiten eventos ...entonces asignamos ngSubmit y ya no
+es necesario pasar variables porque en el ts ya esta -->
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label>Nombre</label>
+            <input type="text" class="form-control" formControlName="nombre">
+    </div>
+    <div class="form-group">
+        <label>Apellidos</label>
+            <input type="text" class="form-control" formControlName="apellidos">
+    </div>
+    <div class="form-group">
+        <label>Edad</label>
+            <input type="text" class="form-control" formControlName="edad">
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+            <input type="text" class="form-control" formControlName="email">
+    </div>
+    <div class="form-group">
+        <label>Dni</label>
+            <input type="text" class="form-control" formControlName="dni">
+    </div>
+    <div class="form-group">
+        <label>password</label>
+            <input type="password" class="form-control" formControlName="password">
+    </div>
+    <div class="form-group">
+        <label>repite password</label>
+            <input type="password" class="form-control" formControlName="repite_password">
+    </div>
+    <input type="submit" value="Enviar" class="btn btn-block btn-success">
+</form>
+{{formulario.value|json}}
