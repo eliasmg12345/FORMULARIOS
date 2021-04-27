@@ -1,1 +1,36 @@
-<p>template works!</p>
+<!-- B4 PARA administrar el formulario en la etiqueta FORM tengo que asignar dos cosas
+uno es cual va ser la varialbe con la que vamos a controlar el formulario el cual
+es el nombre que nosotros querramos #formularioRegistro=.......luego entre comillar
+tiene que ser siempre el ngForm este objeto es el que contiene todos los datos del
+formulario-->
+<!-- TaMBIEN PODEMOS capturar el evento ngSubmit se lanza o se ejectuta en el momento
+en que enviamos el formulario es decir cuando pulsamos y le tenemos que pasar el 
+dato del formulario... en nuestro caso el formularioRegistro   tiene que estar en la 
+propiedad .value  ...y a cada input marcarlo para que sea parte del formulario...
+el input que no este marcado no forma parte del formulario...lo marcaremos con la 
+directiva ngModel sin corchetes y parentesis-->
+<!-- despues nos vemos en => template.ts B5 -->
+<form #formularioRegistro="ngForm" (ngSubmit)="onSubmit(formularioRegistro.value)">
+    <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" name="nombre" class="form-control" ngModel>
+    </div>
+    <div class="form-group">
+        <label>Apellidos</label>
+        <input type="text" name="apellidos" class="form-control" ngModel>
+    </div>
+    <div class="form-group">
+        <label>Edad</label>
+        <input type="text" name="edad" class="form-control" ngModel>
+    </div>
+    <div class="form-group">
+        <label>Direccio</label>
+        <input type="text" name="direccion" class="form-control" ngModel>
+    </div>
+    <input type="submit" class="btn btn-block btn-primary">
+</form>
+<!-- una forma de viosualizar incluyendo los pipes ...los pipes nos sirven para dar
+formato de la manera que nos interese...utilizaremos el pipe json...lo que hace es
+cojer este objeto formularioRegistro.value que es string y transformando en string
+ESTO SOLO PARA TENER SEGURIDAD DE QUE ESTAMOS RELLENANDO  -->
+{{formularioRegistro.value|json }}
