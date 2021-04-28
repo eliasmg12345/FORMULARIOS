@@ -7,6 +7,11 @@ es necesario pasar variables porque en el ts ya esta -->
     <div class="form-group">
         <label>Nombre</label>
             <input type="text" class="form-control" formControlName="nombre">
+            <!-- F4  nombre del formulario.propiedad control. el nombre del propio
+            control y la propiedad a la que queremos acceder-->
+            <div>
+                <p>Valid: {{formulario.controls.nombre.valid}}</p>
+            </div>
     </div>
     <div class="form-group">
         <label>Apellidos</label>
@@ -32,6 +37,18 @@ es necesario pasar variables porque en el ts ya esta -->
         <label>repite password</label>
             <input type="password" class="form-control" formControlName="repite_password">
     </div>
-    <input type="submit" value="Enviar" class="btn btn-block btn-success">
+    <!-- F3 Todos lo elementos html tiene una propiedad que es disabled..por ejemplo
+    puedo hacerlo condicional en funcion de la propiedad formulario.valid..
+    como voy a usar como JS tiene que ir entre corchetes -->
+    <input type="submit" value="Enviar" class="btn btn-block btn-success" [disabled]="!formulario.valid">
 </form>
 {{formulario.value|json}}
+
+<!-- F2  formulario.valid me devolvera TRUE si todos lo campos  del formulario son correctos
+Podemos jugarnos con esto...ejemplo de bloquear el Boton enviar... si no cumplen F3-->
+<div>
+    <p>Valido:{{formulario.valid}}</p>
+    <p>Invalido:{{formulario.invalid}}</p>
+    <p>Dirty: {{formulario.dirty}}</p>
+    <p>Untouched: {{formulario.untouched}}</p>
+</div>
