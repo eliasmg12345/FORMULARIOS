@@ -1,0 +1,9 @@
+
+/* D3 porbando las clases de angular dentro de los inputs */
+input.ng-valid.ng-touched{
+    border:1px solid green;
+
+}
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-model',
@@ -18,14 +18,25 @@ export class ModelComponent implements OnInit {
     // al inicializar los objetos estos tienen que ser tipo FormControl que se tiene
     // que importar ...todos estos controles tienen que tener su referencia en el html
     // ahora en hmtl C4
+
+    /* D2 si en el paramtro de FormGroup ponemos un valor por defecto no nos da un placeholder
+    porque se edita sobre el valor  
+    ---para agregar validadores es incluir como segundo parametro un array y dentro de este
+    podemos pasar todos los validadores que querramos--luego accedemos a la clase Validators
+    que se tiene que importar siempre.....EN fin si uno de los campos nocumple con los
+    validadores el formualrio va a ser erroneo....comprobando con estilos de las clases 
+    en el => css D3*/
+
     this.formulario=new FormGroup({
-      nombre: new FormControl(),
-      apellidos:new FormControl(),
-      edad:new FormControl(),
-      dni:new FormControl(),
-      password: new FormControl(),
-      repite_password: new FormControl(),
-      email:new FormControl()
+      nombre: new FormControl('',[
+        Validators.required
+      ]),
+      apellidos:new FormControl(''),
+      edad:new FormControl(''),
+      dni:new FormControl(''),
+      password: new FormControl(''),
+      repite_password: new FormControl(''),
+      email:new FormControl('')
     });
   }
 

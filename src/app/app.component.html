@@ -5,8 +5,9 @@ a poder definir nuestros archivos estaticos
 el parte de styles: [ ] es donde podemosdefinir estilos de terceros por ejemplo
 el de bosstrap   "node_modules/bootstrap/dist/css/bosststrap.min.css",-->
 
-<h4>Template Driven (/template)</h4>
-<!-- B1 Template Driven ...un paso para el template que tenemos que hacer es si o si
+
+<!-- B1 Template Driven (/template)
+    Template Driven ...un paso para el template que tenemos que hacer es si o si
 es agregar dentro del modulo la libreria correspondinete para la gestion de cada 
 uno de los formularios => app.module.ts B2....despues para empezar a definir el 
 formulario =>  template.html B4 -->
@@ -19,11 +20,18 @@ formulario =>  template.html B4 -->
 </div>
 <hr>
 
-<h4>Model Driven creacion del formulario (/model)</h4>
-<!-- C1 al igual que los template es tambien agregar al modulo la libreria que 
+<!-- C1 Model Driven creacion del formulario (/model)
+    al igual que los template es tambien agregar al modulo la libreria que 
 contiene todas las herramientas  que vamos a utilizar en este caso al ser un
 formulario de tipo model vamos a generar un objeto dentro del ts del componente donde
 lo coloquemos este objeto es una clase viene de una clase esa clase no esta incluida
 por defecto la tenemos que incluir ... incluyendo ReactiveFormsModule en module.ts C2
 despues al componente model.ts =>C3 VAMOS HCER MUCHO TRABAJO DENTRO DEL TS -->
+<router-outlet></router-outlet>
+
+
+<!-- D1 6. Model Driven - Validaciones simples 
+    Validaciones simples...para ellos se analizan los FormControl -->
+<!-- D1 el formControl simpre recibe un primer parametro el que vamos analizar 
+nso dirigmos al => model.ts D2 -->
 <router-outlet></router-outlet>
