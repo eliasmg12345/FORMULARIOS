@@ -33,7 +33,7 @@ export class ModelComponent implements OnInit {
     this.formulario=new FormGroup({
       nombre: new FormControl('',[
         Validators.required,
-        Validators.minLength(3)
+        Validators.minLength(4)
       ]),
       apellidos:new FormControl('',[
         Validators.maxLength(10)

@@ -7,11 +7,29 @@ es necesario pasar variables porque en el ts ya esta -->
     <div class="form-group">
         <label>Nombre</label>
             <input type="text" class="form-control" formControlName="nombre">
+
+
+            <!-- I2  -le voy adar estilos en css..para condicionar nos lleva a tener
+            que llamar al ngIf....y usar la propiedad que hay para todos los controles 
+            que es .errors...me devuelve nulo si no tenemos error____tambien usar
+            el .touched para cuando se toque el campo-->
+            <!-- NOTA. el formulario.controls.nombre.errors nos devuelve null si cumple
+            entonces no podriamos accerder a errors con .null.required por eso ponemos
+            el signo de interrogacion  -->
+            <div class="error" *ngIf="formulario.controls.nombre.errors?.required && formulario.controls.nombre.touched">
+                El campo nombre es requerido
+            </div>
+            <p>{{formulario.controls.nombre.errors|json}}</p>
+            <div class="error" *ngIf="formulario.controls.nombre.errors?.minlength && formulario.controls.nombre.touched">
+                El campo debe tener al menos {{formulario.controls.nombre.errors?.minlength.requiredLength}} caracteres
+            </div>
+            
+            
             <!-- F4  nombre del formulario.propiedad control. el nombre del propio
             control y la propiedad a la que queremos acceder-->
-            <div>
+            <!-- <div>
                 <p>Valid: {{formulario.controls.nombre.valid}}</p>
-            </div>
+            </div> -->
     </div>
     <div class="form-group">
         <label>Apellidos</label>
