@@ -29,6 +29,7 @@ export class ModelComponent implements OnInit {
 
     /* E2 de la clase Validators  usamos el .minLenght que tenemos que pasar el tama;o minimo
     y asi etceteras     */
+
     this.formulario=new FormGroup({
       nombre: new FormControl('',[
         Validators.required,
@@ -37,8 +38,15 @@ export class ModelComponent implements OnInit {
       apellidos:new FormControl('',[
         Validators.maxLength(10)
       ]),
-      edad:new FormControl(''),
-      dni:new FormControl(''),
+      // G3 VALOR YA ASIGNADO SOBRE el campo edad 
+      //  ....tenemos que pasar la definicion y no la ejecucion
+      edad:new FormControl('',[
+        this.edadValidator
+      ]),
+      // H3 meto elvalidador ....tenemos que pasar la definicion y no la ejecucion
+      dni:new FormControl('',[
+        this.dniValidator
+      ]),
       password: new FormControl(''),
       repite_password: new FormControl(''),
       email:new FormControl('',[
@@ -53,4 +61,43 @@ export class ModelComponent implements OnInit {
   onSubmit(){
     console.log(this.formulario.value);
   }
+  // G2 POR EJEMPLO validamos.. luego si el campo es correcto tengo que devolver 
+      // un objeto NULL ...algo que indique al usiuario que esta pasando
+      edadValidator(formControl){
+        const value=formControl.value;
+        const max=65;
+        const min=18;
+        if(value>=18 && value<=65){
+          return null;
+        }else{
+          return {edadValidator:{max,min}};
+        }
+      }
+      // H2 le pasaremos el control al cual le vamos a aplicar este algoritmo y 
+      // saco el valor (const value) para trabajar comodamente...vamos a tratar la
+      // expresion regular / ***/ enJs se lanza conel .test(value) para que nos pase true o false
+      //  
+     dniValidator(formControl){
+       const value=formControl.value;
+       const letras='TRWAGMYFPDXBNJZSQVHLCKET';
+
+
+       if(/^\d{8}[a-zA-Z]$/.test(value)){
+         const numero=value.substr(0,value.length-1);
+         const letra =value.charAt(value.length-1);
+         
+         const calculo=numero%23;
+        
+         const letraSeleccionada=letras.charAt(calculo);
+         if(letra.toUpperCase()==letraSeleccionada){
+           return null;
+
+         }else{
+           return{dniValidator:'la letra no oincide con el numero'};
+         }
+       }else{
+         return{dniValidator:'el dnino tiene buen formato'};
+       }
+
+    }
 }
