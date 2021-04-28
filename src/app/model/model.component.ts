@@ -27,16 +27,23 @@ export class ModelComponent implements OnInit {
     validadores el formualrio va a ser erroneo....comprobando con estilos de las clases 
     en el => css D3*/
 
+    /* E2 de la clase Validators  usamos el .minLenght que tenemos que pasar el tama;o minimo
+    y asi etceteras     */
     this.formulario=new FormGroup({
       nombre: new FormControl('',[
-        Validators.required
+        Validators.required,
+        Validators.minLength(3)
       ]),
-      apellidos:new FormControl(''),
+      apellidos:new FormControl('',[
+        Validators.maxLength(10)
+      ]),
       edad:new FormControl(''),
       dni:new FormControl(''),
       password: new FormControl(''),
       repite_password: new FormControl(''),
-      email:new FormControl('')
+      email:new FormControl('',[
+        Validators.pattern(/sad/)
+      ])
     });
   }
 
