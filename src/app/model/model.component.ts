@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+// K3
+import {debounceTime} from 'rxjs/operators';
+
 @Component({
   selector: 'app-model',
   templateUrl: './model.component.html',
@@ -54,8 +57,21 @@ export class ModelComponent implements OnInit {
       ])
     });
   }
-
+  /*K2 lo are en el ngOnInit porque es donde arrancamos nuestra app
+  voy a recuperar el control del email lo sacamos del formualario ...si habria problemas
+  de sintaxis ponemos en lugar de .email => ['email'] 
+  el valueChanges es un observable por lo tanto tengo que suscribirme...y lo que me 
+  va a devolver es el valor del campo............
+  lo interesante de esto es que tenemos un metodo que podemos importar arriba K3 
+  para aplicarlo antes de suscribirnos ES PASARLE MEDIANTE la propiedad pipe para que se
+  convierta tambien en un observable la llamada al debounceTime() con esto hacemos que 
+  nos devuelva  el valor al que nos hemos suscrito ...es devir cuandoo yo paro de escribir
+  me meustra recien em la consola ____de esta manerta podemos tener control de los forms*/
   ngOnInit(): void {
+    const emailControl=this.formulario.controls['email'];
+    emailControl.valueChanges.pipe(debounceTime(500)).subscribe(value=>{
+      console.log(value);
+    })
   }
 
   onSubmit(){
