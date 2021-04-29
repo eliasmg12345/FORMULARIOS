@@ -63,11 +63,11 @@ export class ModelComponent implements OnInit {
   }
   // G2 POR EJEMPLO validamos.. luego si el campo es correcto tengo que devolver 
       // un objeto NULL ...algo que indique al usiuario que esta pasando
-      edadValidator(formControl){
+      edadValidator(formControl){ 
         const value=formControl.value;
         const max=65;
-        const min=18;
-        if(value>=18 && value<=65){
+        const min=21;
+        if(value>=min && value<=max){
           return null;
         }else{
           return {edadValidator:{max,min}};

@@ -34,18 +34,48 @@ es necesario pasar variables porque en el ts ya esta -->
     <div class="form-group">
         <label>Apellidos</label>
             <input type="text" class="form-control" formControlName="apellidos">
+            <!-- J2 quiero qu aparezca este bloque de codigo condicionalmente siempre 
+            y cuando  tenga errores... para acceder a los errores accedemos  a la
+            instancia del formulario propiedad controls  el nobre del control y dentro
+            tendremos la propiedad error ...esta propiedad errors si quiero ser muy 
+            concreto tendria que acceder a maxlenght y ademas necesitamos que este control haya
+            sid tocado haya perdido el foco lo Hacemos con la instancia de formulario controls 
+            el nombre y  propiedad touched  -->
+            <div class="error" *ngIf="formulario.controls.apellidos.errors?.maxlength && formulario.
+            controls.apellidos.touched">
+                <!-- J3 aqui podemos acceder a la propiedad require length del 
+                max length -->
+                El campo apellidos no puede tener mas de {{formulario.controls.apellidos.errors?.maxlength.requiredLength}} Caracteres
+            </div>
     </div>
     <div class="form-group">
         <label>Edad</label>
             <input type="text" class="form-control" formControlName="edad">
+            <!-- J4  -->
+            <p>{{formulario.controls.edad.errors|json}}</p>
+            <div class="error" *ngIf="formulario.controls.edad.errors?.edadValidator && formulario.
+            controls.edad.touched">
+                el campo edad debe estar entre {{formulario.controls.edad.errors?.edadValidator.min}}
+                y  {{formulario.controls.edad.errors?.edadValidator.max}} anios
+            </div>
     </div>
     <div class="form-group">
         <label>Email</label>
             <input type="text" class="form-control" formControlName="email">
+            <!-- J5  -->
+            <div class="error" *ngIf="formulario.controls.email.errors &&formulario.controls.
+            email.touched">
+                el campo email es erroeneo
+            </div>
     </div>
     <div class="form-group">
         <label>Dni</label>
             <input type="text" class="form-control" formControlName="dni">
+            <!-- J6 -->
+            <div class="error" *ngIf="formulario.controls.dni.errors && formulario.controls.
+            dni.touched">
+                {{formulario.controls.dni.errors?.dniValidator}}
+            </div>
     </div>
     <div class="form-group">
         <label>password</label>
